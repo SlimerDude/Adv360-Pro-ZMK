@@ -4,10 +4,6 @@
 #include <dt-bindings/zmk/rgb.h>
 #include <dt-bindings/zmk/backlight.h>
 
-&mt {
-    tapping-term-ms = <400>;
-};
-
 / {
     behaviors {
       #include "macros.dtsi"
@@ -22,6 +18,10 @@
           bindings = <&kp>, <&kp>;
       };
       
+      /*
+      * Holding a NUM invokes the Fn Key - but not ONLY if there's NO key press for <125>ms!
+      * https://zmk.dev/docs/behaviors/hold-tap#global-quick-tap
+      */
       gqt: global-quick-tap {
           compatible      = "zmk,behavior-hold-tap";
           label           = "GLOBAL_QUICK_TAP";
